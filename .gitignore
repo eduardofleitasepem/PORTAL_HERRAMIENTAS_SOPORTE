@@ -1,0 +1,19 @@
+Dependencias
+**/node_modules/
+**/dist/
+**/.env
+**/.env.local
+**/*.sqlite
+**/data.sqlite
+Logs
+*.log
+logs/
+IDE
+.vscode/
+.idea/
+Sistema operativo
+.DS_Store
+Thumbs.db
+Builds
+**/build/
+**/coverage/
