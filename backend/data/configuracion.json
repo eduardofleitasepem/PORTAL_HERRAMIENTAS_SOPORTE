@@ -1,0 +1,32 @@
+{
+  "grupos_tickets": [
+    { "id": 1, "nombre": "No asignado" },
+    { "id": 6, "nombre": "Desarrollo" },
+    { "id": 8, "nombre": "Out Office Dev" },
+    { "id": 10, "nombre": "Consulta y configuraciones" },
+    { "id": 15, "nombre": "Infra" }
+  ],
+  "estados_tickets": [
+    { "id": 1, "nombre": "Nuevo", "es_final": false },
+    { "id": 3, "nombre": "Recibido", "es_final": false },
+    { "id": 5, "nombre": "Pendiente Autorizacion", "es_final": false },
+    { "id": 10, "nombre": "En Desarrollo", "es_final": false },
+    { "id": 13, "nombre": "Implementacion", "es_final": false },
+    { "id": 14, "nombre": "Correccion", "es_final": false },
+    { "id": 15, "nombre": "Cerrado", "es_final": true },
+    { "id": 20, "nombre": "Eliminado", "es_final": true }
+  ],
+  "modulos_portal": [
+    { "id": "conocimientos", "nombre": "Base de conocimientos", "icono": "book", "descripcion": "Articulos y guias del equipo de soporte" },
+    { "id": "errores", "nombre": "Buscar errores", "icono": "search", "descripcion": "Errores comunes con sus diagnosticos" },
+    { "id": "reportes", "nombre": "Generar reporte", "icono": "file-text", "descripcion": "Plantillas para reportes de soporte" },
+    { "id": "procedimientos", "nombre": "Procedimientos", "icono": "list", "descripcion": "Pasos paso a paso para casos frecuentes" },
+    { "id": "herramientas", "nombre": "Herramientas", "icono": "tool", "descripcion": "Utilidades y scripts de diagnostico" },
+    { "id": "documentacion", "nombre": "Documentacion", "icono": "file", "descripcion": "Manuales y politicas del sistema" }
+  ],
+  "sucursales": [
+    { "id": 1, "nombre": "Central", "ciudad": "Asuncion" },
+    { "id": 2, "nombre": "Sucursal Norte", "ciudad": "Asuncion" },
+    { "id": 3, "nombre": "Sucursal Sur", "ciudad": "San Lorenzo" }
+  ]
+}

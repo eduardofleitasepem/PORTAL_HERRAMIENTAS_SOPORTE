@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "codigo": "SIFEN-001",
+    "titulo": "Error 400 al enviar a SIFEN",
+    "descripcion": "El usuario reporta que al intentar enviar una factura a SIFEN, el sistema devuelve error 400 sin detalle adicional.",
+    "causa": "Posiblemente el campo 'cdc' (Codigo de Control de Documento) esta vacio o tiene formato incorrecto.",
+    "solucion": "Verificar que el CDC este generado correctamente. Ir a Configuracion -> SIFEN -> Regenerar CDC. Si persiste, revisar que el RUC del emisor este activo.",
+    "modulo_afectado": "SIFEN",
+    "frecuencia": "alta",
+    "tags": ["sifen", "error 400", "cdc", "factura"]
+  },
+  {
+    "id": 2,
+    "codigo": "COM-002",
+    "titulo": "Comisiones duplicadas para un mismo asesor",
+    "descripcion": "En el reporte de comisiones, un asesor aparece con el mismo monto cobrado 2 o mas veces en el mismo periodo.",
+    "causa": "El asiento contable de la compra tuvo un reversion (por devolucion o ajuste) y el sistema genero la comision nuevamente.",
+    "solucion": "Identificar la OP masiva con op_massive_details.id repetido. Filtrar por op_massive_id en la tabla op_massive_details. Eliminar el registro duplicado del detalle.",
+    "modulo_afectado": "Comisiones",
+    "frecuencia": "media",
+    "tags": ["comisiones", "duplicado", "op_massive", "asesor"]
+  },
+  {
+    "id": 3,
+    "codigo": "FIN-003",
+    "titulo": "Presupuesto financiado no aparece en el reporte de impresion",
+    "descripcion": "Un presupuesto odontologico que tiene financiacion activa no muestra el asiento contable en el reporte PDF.",
+    "causa": "El asiento contable existe (accounting_entries con fromable_type='App\\Models\\Purchase') pero el reporte de impresion no lo esta consultando correctamente.",
+    "solucion": "Verificar en accounting_entries que el fromable_id y fromable_type coincidan con la compra. Si el asiento existe, el problema esta en el reporte/visualizador, no en la generacion.",
+    "modulo_afectado": "Financiacion",
+    "frecuencia": "baja",
+    "tags": ["financiacion", "presupuesto", "asiento contable", "reporte"]
+  },
+  {
+    "id": 4,
+    "codigo": "RRHH-004",
+    "titulo": "Usuario nuevo no puede ingresar al sistema",
+    "descripcion": "Se creo el usuario en el sistema pero al intentar loguearse dice 'Credenciales invalidas'.",
+    "causa": "Probablemente el usuario no tenga un rol asignado en la tabla role_user, o el campo user_type no coincida.",
+    "solucion": "Verificar en la tabla role_user que exista el par (user_id, role_id, user_type). Recordar que el sistema esta disenado para un unico rol por usuario.",
+    "modulo_afectado": "RRHH",
+    "frecuencia": "media",
+    "tags": ["usuarios", "login", "rol", "role_user"]
+  },
+  {
+    "id": 5,
+    "codigo": "TICK-005",
+    "titulo": "El boton 'Procesar' no aparece en ficha clinica",
+    "descripcion": "En la ficha clinica de un paciente, el boton para procesar no se muestra.",
+    "causa": "Verificar que el usuario tenga el permiso correspondiente en la tabla permissions y que el modulo de ficha clinica este activo en su rol.",
+    "solucion": "Revisar permissions del usuario. Si el permiso existe y esta asignado, verificar que no haya una regla de negocio que oculte el boton (ej: paciente sin contrato activo).",
+    "modulo_afectado": "Ficha Clinica",
+    "frecuencia": "baja",
+    "tags": ["ficha clinica", "procesar", "permisos", "boton"]
+  }
+]

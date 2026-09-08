@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "titulo": "Como diagnosticar comisiones duplicadas",
+    "pasos": [
+      {
+        "orden": 1,
+        "descripcion": "Solicitar al usuario el nombre del asesor y el periodo del reporte (desde/hasta)."
+      },
+      {
+        "orden": 2,
+        "descripcion": "Ejecutar query en la tabla op_massive_details filtrando por op_massive_id correspondiente al periodo."
+      },
+      {
+        "orden": 3,
+        "descripcion": "Buscar registros con el mismo purchase_id y purchase_op_id repetidos."
+      },
+      {
+        "orden": 4,
+        "descripcion": "Verificar en la tabla op_massives que la OP tenga status = 'completado'."
+      },
+      {
+        "orden": 5,
+        "descripcion": "Eliminar el registro duplicado del detalle (op_massive_details) si la OP ya fue procesada."
+      },
+      {
+        "orden": 6,
+        "descripcion": "Informar al usuario que el reporte se corregira en la proxima ejecucion del proceso de comisiones."
+      }
+    ],
+    "modulo": "Comisiones",
+    "nivel": "avanzado",
+    "tiempo_estimado": "15 minutos"
+  },
+  {
+    "id": 2,
+    "titulo": "Como crear un usuario nuevo en el sistema",
+    "pasos": [
+      {
+        "orden": 1,
+        "descripcion": "Solicitar via formulario de RRHH: nombre completo, correo, cedula, sucursal y rol solicitado."
+      },
+      {
+        "orden": 2,
+        "descripcion": "Verificar que el correo no exista en la tabla users (campo email)."
+      },
+      {
+        "orden": 3,
+        "descripcion": "Insertar en tabla users: first_name, last_name, email, password (hasheado), document, branch_id."
+      },
+      {
+        "orden": 4,
+        "descripcion": "Insertar en tabla role_user: user_id (el nuevo), role_id, user_type='App\\Models\\User'."
+      },
+      {
+        "orden": 5,
+        "descripcion": "Recordar: el sistema permite un solo rol por usuario. NO insertar roles secundarios."
+      },
+      {
+        "orden": 6,
+        "descripcion": "Enviar credenciales al usuario por canal seguro (no por WhatsApp ni Telegram sin autorizacion)."
+      }
+    ],
+    "modulo": "RRHH",
+    "nivel": "basico",
+    "tiempo_estimado": "5 minutos"
+  },
+  {
+    "id": 3,
+    "titulo": "Como diagnosticar un error SIFEN",
+    "pasos": [
+      {
+        "orden": 1,
+        "descripcion": "Pedir al usuario que capture pantalla del error completo (codigo y mensaje)."
+      },
+      {
+        "orden": 2,
+        "descripcion": "Identificar si es error de la SET (timeout, 500) o error de validacion (400, 422)."
+      },
+      {
+        "orden": 3,
+        "descripcion": "Si es 400: verificar CDC, RUC activo, formato XML valido."
+      },
+      {
+        "orden": 4,
+        "descripcion": "Si es 500 o timeout: reportar a infraestructura para verificar conectividad con la SET."
+      },
+      {
+        "orden": 5,
+        "descripcion": "Documentar el caso en el ticket con el error exacto y la solucion aplicada."
+      }
+    ],
+    "modulo": "SIFEN",
+    "nivel": "intermedio",
+    "tiempo_estimado": "10 minutos"
+  }
+]
