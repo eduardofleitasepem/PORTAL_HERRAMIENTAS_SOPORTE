@@ -13,11 +13,17 @@ export interface EstadoTicket{
     nombre: string;
     ed_final:boolean;
 }
+export interface ModuloPortal{
+    id:number;
+    nombre: string;
+    descripcion:string;
+}
 
 //La forma del archivo JSON completo
 export interface Configuracion{
     grupos_tickets: GrupoTicket[];
-    estados_tickets: EstadoTicket[]
+    estados_tickets: EstadoTicket[];
+    modulos_portal:ModuloPortal[];
 }
 
 @Injectable()
@@ -47,5 +53,9 @@ export class ConfiguracionServices{
     //Solo los estados de tickets
     getEstadosTickets(): EstadoTicket[]{
         return this.findAll().estados_tickets;
+    }
+    //Solo los modulos portal
+    getModulosPortal():ModuloPortal[]{
+        return this.findAll().modulos_portal;
     }
 }

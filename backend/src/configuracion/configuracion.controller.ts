@@ -5,7 +5,8 @@ import { ConfiguracionServices } from "./configuracion.service.js";
 import type {
   Configuracion,
   EstadoTicket,
-  GrupoTicket
+  GrupoTicket,
+  ModuloPortal
 } from "./configuracion.service.js";
 
 @Controller('configuracion')
@@ -31,5 +32,9 @@ export class ConfiguracionController {
   @Get('estados-tickets')
   getEstadosTickets(): EstadoTicket[] {
     return this.configuracionServices.getEstadosTickets();
+  }
+  @Get('modulos-portal')
+  getModulosPortal(): ModuloPortal[]{
+    return this.configuracionServices.getModulosPortal(); 
   }
 }
